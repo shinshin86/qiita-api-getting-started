@@ -6,7 +6,8 @@ const mapStateToProps = state => {
   const { post } = state;
   const { isFetching, items } = post || {
     isFetching: false,
-    items: []
+    items: [],
+    error: {}
   };
   return {
     post

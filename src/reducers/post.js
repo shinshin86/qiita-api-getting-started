@@ -8,12 +8,14 @@ import type { Action } from '../actions/post';
 
 type State = {
   isFetching: boolean,
-  items: Array<any>
+  items: Array<any>,
+  error: any
 };
 
 const initialState = {
   isFetching: false,
-  items: []
+  items: [],
+  error: {}
 };
 
 export default function post(

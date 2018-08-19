@@ -12,8 +12,14 @@ export type Action =
 
 export const fetchItemList = () => async (dispatch: ReduxDispatch) => {
   dispatch({ type: REQUEST_FETCH_ITEM_LIST });
-  const data = await fetchPostItemList();
-  dispatch({ type: SUCCESS_FETCH_ITEM_LIST, data });
+  try {
+    const data = await fetchPostItemList();
+    dispatch({ type: SUCCESS_FETCH_ITEM_LIST, data });
+    return;
+  } catch (error) {
+    dispatch({ type: FAILURE_FETCH_ITEM_LIST, error });
+    return;
+  }
 };
 
 async function fetchPostItemList(): any {
